@@ -1,8 +1,7 @@
 console.log('Service worker registration');
 
 const excludeFromCache = [
-  'https://www.google.com/images/phd/px.gif',
-  'http://localhost:8081/data/spacex.json'
+  'http://localhost:8081/data/database.json'
 ];
 
 const cacheVersion = 'v2';

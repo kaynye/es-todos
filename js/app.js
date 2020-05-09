@@ -2,7 +2,9 @@ import page from '/node_modules/page/page.mjs';
 import checkConnectivity from './network.js';
 import { addTodo,getAllTodo } from './api/todo.js';
 import { setTodos, setTodo, getTodos,getFutureTodos,deleteFutureTodos } from './idb.js';
-//Loading config
+
+
+//Setup coversion function
 Object.prototype.formToJson=function(form){
   var formElement = document.getElementsByTagName("form")[0],
       inputElements = formElement.querySelectorAll("input,textarea"),
@@ -27,6 +29,8 @@ Object.prototype.formToJsonString=function(form){
   return JSON.stringify(jsonObject);
 }
 
+
+
 const app = document.querySelector('#app .outlet');
 
 const homeCtn = app.querySelector('[page=home]');
@@ -44,7 +48,6 @@ document.addEventListener('connection-changed', e => {
   document.offline = !e.detail;
   if (e.detail) {
     root.style.setProperty('--app-blue', '#007eef');
-    // console.log('Back online');
     getFutureTodos().then(function(listeTodoToCreate){
       console.log(listeTodoToCreate)
       if (listeTodoToCreate.length>0){
@@ -63,13 +66,11 @@ document.addEventListener('connection-changed', e => {
             }
           })
         }
-        //location.reload();
       }
     })
     
   } else {
     root.style.setProperty('--app-blue', '#7D7D7D');
-    // console.log('Connection too slow');
   }
 });
 
@@ -122,19 +123,4 @@ fetch('/config.json')
 
 
   });
-
-
-
-// fetch('http://localhost:3000/todos', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },  
-//   body: JSON.stringify({
-//     id: Date.now(),
-//     title: 'Plop is the new plop'
-//   })
-// }).then((response) => response.json())
-//   .then(console.log());
-
 page()
