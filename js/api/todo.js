@@ -1,4 +1,4 @@
-export async function fetchTodos() {
+export async function getAllTodo() {
   const config = window.config;
   return fetch(`${config.api}/todos`, {
     method: 'GET',
@@ -13,7 +13,7 @@ export async function fetchTodos() {
   });
 }
 
-export async function createTodo(data) {
+export async function addTodo(data) {
   const config = window.config;
   return fetch(`${config.api}/todos`, {
     method: 'POST',

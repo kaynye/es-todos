@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "database": "npx json-server --watch ./data/database.json",
-    "server": "es-dev-server --app-index index.html --node-resolve --watch -p 8080",
+    "server": "npx es-dev-server --app-index index.html --node-resolve --watch -p 8080",
     "css": "npx tailwindcss build ./styles/tailwind-import.css -o ./styles/tailwind.css",
     "css:prod": "NODE_ENV=production && npx tailwindcss build ./styles/tailwind-import.css -o ./styles/tailwind.css"
   },
